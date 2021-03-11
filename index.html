@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Physics Simulation - Info</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela Round">
+<link rel="stylesheet" href="style.css">
+<script src="main.js" defer></script>
+<script src="./Simulation/canvas.js" defer></script>
+</head>
+<body>
+    <div class="webpage-state" id="webpage-state-always">
+        <div id="top-bar">
+            <p class="top-bar-text" id="home">Home</p>
+            <p class="top-bar-text" id="how-it-works">How It Works</p>
+            <p class="top-bar-text" id="about">About</p>
+            <p class="top-bar-text" id="simulation">Simulation</p>
+        </div>
+    </div>
+    <div class="webpage-state" id="webpage-state-home">
+        <img id="nebula-background" src="./Images/Nebula.jpg">
+        <div id="physics-title-position-container">
+            <h1>PHYSICS</h1>
+        </div>
+            <h2>Introduction</h2>
+            <p>Physics is a natural science that happens all around us, all the time, everyday. We try to understand the universe and everything in it. What is physics? Physics is the branch of science which deals with matter and its relation to energy. It involves study of physical and natural phenomena around us. The physics of a ball dropping is actually decently complex and can take a lot to understand. For example, a bouncing ball in a simplified case, the ball falls in line with the force of gravity, which always points directly downward. On earth, this acceleration due to gravity is 9.8 m/s2 (g= 9.8 m/s2). This means, in essence, that for every second for falling, the ball's velocity will accelerate by 9.8 m/s. Velocity is the speed of something in a certain direction.
+            <br>
+            <br>
+            There are many applications to physics today. For example, the transportation industry is no stranger to the manipulation of everyday physics. Cars and trains utilize the wheel, which provides a smooth, steady motion. Newton's laws of motion are at work as mechanical force and acceleration, action, reaction and inertia. Airplanes take it one step further, allowing lift as well as forward momentum. They manipulate physics – much like birds – by creating lift through wing shape as well as the wing’s angle – both of which serve to alter airflow.
+            <br>
+            <br>
+            Another example of physics in action is with a simple lever – most easily observed at a park. Levers come in three flavors, each with varying fulcrum locations. They serve to magnify force, lessening the effort needed to move an object on the opposing end. A simple “see-saw” at a park consists of a lever (the locations for sitting) and the fulcrum (placed in the middle). The two opposing forces counterbalance each other, creating a smooth ride through the air. At the same park you'll see a slide, a device that combines the stairs going up with the slide going down, both examples of inclined planes. The inclined plane eases the effort of climbing by spreading it over a longer distance. The smooth slide returns you gently to earth, slowing the influence of gravity just enough to make it fun.
+            <br>
+            <br>
+            Physics is all relative. This theme resonates through Einstein’s special and general theories of relativity. Einstein's work is crucially important to GPS in your phone, for example. It takes radio signals from several satellites orbiting the Earth and calculates your location accurate to several centimeters. Because the speed and height of the satellites alters the signal very slightly, the smartphone adjusts the results using Einstein's theories. Without a helping hand from relativity, GPS would be far less accurate or useful.
+            </p>
+    </div>
+    <div class="webpage-state" id="webpage-state-how-it-works">
+        <img id="nebula-background" src="./Images/Nebula.jpg">
+        <div id="how-it-works-title-position-container"><h1>HOW IT WORKS</h1>
+        </div>
+        <div>
+            <h2>Instructions</h2>
+            <p> To operate this simulation you have to keep these instructions in mind: </p>
+                 <ol id="instructions-list">
+                     <li>By default, there will be one ball that appears on the screen (which will be a basketball)</li>
+                     <li>Click the "start simulation" button to begin the program</li>
+                     <li>Use the sliders to change the gravity of the area, and the wind</li>
+                     <li>Click the different ball options to choose the balls to simulate</li>
+                     <li>Use the buttons showed for selecting how many balls to put on the screen to compare, if you want to compare different balls and their properties</li>
+                     <li>Click the "reset simulation" button to reset the program</li>
+                </ol>
+            <p>
+                Have fun and play around with the simulation!!!
+            </p>
+        </div>
+    </div>
+    <div class="webpage-state" id="webpage-state-about">
+        <img id="nebula-background" src="./Images/Nebula.jpg">
+        <div id="about-title-position-container"><h1>ABOUT</h1>
+        </div>
+        <div>
+            <h2>Overview</h2>
+            <p>
+                I have designed a physics simulation that represents the operation of balls dropping to the ground. You can display different balls, such as a tennis ball, basketball, football etc. You can also compare 2 different balls to see the different physics of the balls, that are affected my mass, weight, wind and gravity. The simulation was created is HTML5 Canvas, and can be useful in testing the accurate simulation of how balls work in a physics perspective.
+                <br>
+                <br>
+                For example, as a golf ball travels upward, kinetic energy is transformed into gravitational potential energy, and the ball slows down. Since gravitational potential energy is proportional to height, the maximum height of the golf ball should be about nine times the height from which it was originally dropped. As for a ball comparison travelling downwards, for example, both a basketball and a tennis ball are moving at the same speed right before they hit the ground. After the collision, the basketball has a very low speed and thus very little kinetic energy. That means the tennis ball gets a bunch of kinetic energy—and with a low mass, you get a high velocity.
+            </p>
+        </div>
+    </div>
+    <div class="webpage-state" id="webpage-state-simulation">
+        <canvas id="myCanvas"></canvas>
+    </div>
+</body>
+</html>
