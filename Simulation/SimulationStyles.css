@@ -32,6 +32,11 @@
 	background: linear-gradient(to right, #BA1C21 0%, #BA1C21 100%);
 }
 
+#test-slider-text {
+	color: white;
+	margin-left: 1vw;
+}
+
 #sidenav-left {
   height: 100%;
   width: 0;
@@ -89,6 +94,10 @@
 	transition: background 0.2s;
 }
 
+.buttons {
+	color: white;
+}
+
 .settings-button .red:hover {
 	background: #ff9ccb;
 	background-size: 25vw;
@@ -105,4 +114,9 @@
     background-color: #111;
     width: 100vw;
     z-index: 100;
+}
+
+#home {
+	position: relative;
+	margin-left: 90vw;
 }
