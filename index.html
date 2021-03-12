@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela Round">
 <link rel="stylesheet" href="style.css">
 <script src="main.js" defer></script>
-<script src="./Simulation/canvas.js" defer></script>
+<script src="canvas.js" defer></script>
 </head>
 <body>
     <div class="webpage-state" id="webpage-state-always">
@@ -71,6 +71,19 @@
     </div>
     <div class="webpage-state" id="webpage-state-simulation">
         <canvas id="myCanvas"></canvas>
+        <div id="simulation-top-bar">
+            <img src="./Images/cog.png" onclick="openNav('sidenav-left')" class="buttons" id="settings">Settings</img>
+            <!-- <p class="top-bar-text" id="home">Home</p>
+            <p class="top-bar-text" id="how-it-works">How It Works</p> -->
+        </div>
+
+        <div id="sidenav-left" class="sidenav">
+            <span onclick="closeNav('sidenav-left')" class="buttons" id="close-settings">&times;</span>
+            <p id="gravity-text">value: 50</p>
+            <input type="range" class="slider" id="gravity" min="0" max="100" value="100">
+            <button class="settings-button" id="start-restart">Start/Restart</button>
+            <button class="settings-button" id="dark-mode">Dark Mode Toggle</button>
+        </div>
     </div>
 </body>
 </html>

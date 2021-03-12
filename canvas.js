@@ -25,7 +25,7 @@ let wind = 0;
 let gravity = 0.16;
 let friction = 0.99;
 
-let iterations = 2;
+let iterations = 8;
 
 
 // Event Listeners
@@ -40,7 +40,11 @@ addEventListener("resize", function() {
   init();
 });
 
-document.getElementById("start-button").addEventListener("click", function(event) {
+document.getElementById("simulation").addEventListener("click", function(event) {
+	animate();
+});
+
+document.getElementById("start-restart").addEventListener("click", function(event) {
 	init();
 });
 
@@ -88,7 +92,7 @@ function Ball(x, y, dx, dy, radius, color) {
 	this.color = color;
 
 	this.update = function() {
-		if (this.y + this.radius + this.dy> canvas.height) {
+		if (this.y + this.radius + this.dy / iterations> canvas.height) {
 			this.dy = -this.dy;
 			this.dy = this.dy * friction;
 			this.dx = this.dx * friction;
@@ -96,14 +100,14 @@ function Ball(x, y, dx, dy, radius, color) {
 			// this.x = canvas.height - this.radius;
 		}
 
-		if (this.x + this.radius + this.dx > canvas.width) {
+		if (this.x + this.radius + this.dx / iterations> canvas.width) {
 			this.dx = -this.dx;
 			this.dy = this.dy * friction;
 			this.dx = this.dx * friction;
 			this.x = canvas.width - this.radius;
 		}
 
-		if (this.x - this.radius + this.dx < 0) {
+		if (this.x - this.radius + this.dx / iterations < 0) {
 			this.dx = -this.dx;
 			this.dy = this.dy * friction;
 			this.dx = this.dx * friction;
@@ -119,8 +123,9 @@ function Ball(x, y, dx, dy, radius, color) {
 	this.draw = function() {
 		ctx.beginPath();
 		ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);	
-		ctx.fillStyle = this.color;
-		ctx.fill();
+		ctx.strokeStyle = this.color;
+		ctx.lineWidth = 4;
+		ctx.stroke();
 		ctx.closePath();
 	};
 }
@@ -218,12 +223,16 @@ function animate() {
 }
 
 init();
-animate();
 
-document.getElementById("test-slider").addEventListener("input", function(event) {
+document.getElementById("gravity").addEventListener("input", function(event) {
 	gravity = parseInt(this.value) / 100;
-	document.getElementById("test-slider-text").textContent = "value: " + parseInt(this.value) + "%";
+	document.getElementById("gravity-text").textContent = "value: " + parseInt(this.value);
 });
+
+// document.getElementById("test-slider").addEventListener("input", function(event) {
+// 	gravity = parseInt(this.value) / 100;
+// 	document.getElementById("test-slider-text").textContent = "value: " + parseInt(this.value) + "%";
+// });
 
 let sliders = document.getElementsByClassName("slider");
 	for (let i = 0; i < sliders.length; i++) {
@@ -232,11 +241,6 @@ let sliders = document.getElementsByClassName("slider");
 		});
 		sliders[i].dispatchEvent(new CustomEvent("input"));
 	}
-
-// document.getElementById("test-slider").addEventListener("input", function(event) {
-// 	gravity = parseInt(this.value) / 100;
-// 	document.getElementById("test-slider-text").textContent = "value: " + parseInt(this.value);
-// });
 
 //Util Funtions
 function map(num, numMin, numMax, mapMin, mapMax) {

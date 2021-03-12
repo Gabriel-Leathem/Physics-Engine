@@ -2,6 +2,7 @@ body {
     font-family: Varela Round, Helvetica;
     margin: 0;
     overflow-x: hidden;
+    transition: background-color 0.2s;
 }
 
 h1 {
@@ -67,6 +68,10 @@ p {
     z-index: 100;
 }
 
+#home {
+    margin-left: 0 !important;
+}
+
 .top-bar-text {
     position: relative;
     box-sizing: border-box;
@@ -101,4 +106,134 @@ p {
 
 * {
     cursor: default; 
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 4vw;
+    height: 1vw;
+    border-radius: 1vw;
+    border: 0.4vh solid #BA1C21;
+    background: #222;
+    margin-top: calc(3.3vh / 2);
+    outline: none;
+    position: relative;
+    top: -1vh;
+    transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.1s ease;
+}
+
+.slider::-webkit-slider-thumb:hover {
+    /*background: #FD67AE;*/
+    border-color: #C71E23;
+    box-shadow: -3px -3px 6px #BA1C21, 3px -3px 6px #BA1C21, 3px 3px 6px #BA1C21, -3px 3px 6px #BA1C21;
+}
+
+.slider::-webkit-slider-thumb:hover:active {
+    background: #C71E23;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 90%;
+    margin-left: 5%;
+    outline: none;
+    height: 0.4vh;
+    border-radius: 2.5vh;
+    background: linear-gradient(to right, #BA1C21 0%, #BA1C21 100%);
+}
+
+#gravity-text {
+    color: white;
+    margin-left: 1vw;
+    width: 10vw;
+}
+
+#sidenav-left {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #222;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.5s; 
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.buttons {
+    box-sizing: border-box;
+    float: left;
+    margin: 0;
+    color: #fff;
+    height: 6vh;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    padding-top: 1.5vh;
+    padding-bottom: 1vh;
+    background-color: #222;
+    z-index: 100;
+}
+
+
+.settings-button {
+    box-sizing: border-box;
+    width: 90%;
+    outline: none;
+    margin-left: 5%;
+    border-radius: 1.5vh;
+    background: #2ca4cc;
+    background-size: 25vw;
+    color: #e4ecef;
+    text-align: center;
+    font-family: inherit;
+    font-size: 1vw;
+    border: none;
+    margin-top: 2vh;
+    margin-bottom: 1vh;
+    height: calc(5vh + 1em);
+    transition: background 0.2s;
+}
+
+#simulation-top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #222;
+    width: 100vw;
+    z-index: 100;
+}
+
+#home {
+    position: relative;
+    margin-left: 90vw;
+}
+
+.dark-mode {
+  background-color: #333;
+  color: white;
+}
+
+#settings {
+    padding-left: 1vw;
+    padding-top: 2vh;
+}
+
+#close-settings {
+    margin left: 0;
+    padding-left: 18vw;
+    padding-right: 0;
 }
