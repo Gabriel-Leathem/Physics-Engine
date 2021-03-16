@@ -21,19 +21,22 @@ let colors = [
  	'#298D9E'
 ];
 
+let darkerColors = [
+  '#5e1335',
+  '#a49a43',
+  '#a43366',
+  '#2290a4',
+  '#1c626e'
+]
+
 let wind = 0;
 let gravity = 0.16;
 let friction = 0.99;
-
+let ballCount = 10;
 let iterations = 8;
 
 
 // Event Listeners
-addEventListener("mousemove", function(event) {
-	mouse.x = event.clientX;
-	mouse.y = event.clientY;
-});
-
 addEventListener("resize", function() {
 	canvas.width = innerWidth;	
 	canvas.height = innerHeight;
@@ -50,6 +53,56 @@ document.getElementById("start-restart").addEventListener("click", function(even
 
 document.getElementById("dark-mode").addEventListener("click", function(event) {
 	darkModeToggle();
+});
+
+function show(id) {
+    document.getElementById(id).style.display = "block";
+}
+
+function hide(id) {
+    document.getElementById(id).style.display = "none";
+}
+
+show("webpage-state-always");
+hide("webpage-state-how-it-works");
+hide("webpage-state-simulation");
+hide("webpage-state-about");
+
+document.getElementById("how-it-works").addEventListener('click', function() {
+    show("webpage-state-how-it-works");
+    hide("webpage-state-home");
+    hide("webpage-state-about");
+    hide("webpage-state-simulation");
+});
+
+document.getElementById("home").addEventListener('click', function() {
+    show("webpage-state-home");
+    hide("webpage-state-how-it-works");
+    hide("webpage-state-simulation");
+    hide("webpage-state-about");
+});
+
+document.getElementById("home-button").addEventListener('click', function() {
+    show("webpage-state-always");
+    show("webpage-state-home");
+    hide("webpage-state-how-it-works");
+    hide("webpage-state-simulation");
+    hide("webpage-state-about");
+});
+
+document.getElementById("about").addEventListener('click', function() {
+    show("webpage-state-about");
+    hide("webpage-state-how-it-works");
+    hide("webpage-state-simulation");
+    hide("webpage-state-home");
+});
+
+document.getElementById("simulation").addEventListener('click', function() {
+    show("webpage-state-simulation");
+    hide("webpage-state-how-it-works");
+    hide("webpage-state-home");
+    hide("webpage-state-about");
+    hide("webpage-state-always")
 });
 
 // Util Functions
@@ -82,37 +135,58 @@ function darkModeToggle() {
   element.classList.toggle("dark-mode");
 }
 
+function map(num, numMin, numMax, mapMin, mapMax) {
+			return mapMin + ((mapMax - mapMin) / (numMax - numMin)) * (num - numMin);
+		};
+
+function openNav(sidenav) {
+  document.getElementById(sidenav).style.width = "20vw";
+}
+
+function closeNav(sidenav) {
+  document.getElementById(sidenav).style.width = "0";
+}
+
 // Objects
-function Ball(x, y, dx, dy, radius, color) {
+function Ball(x, y, dx, dy, radius, color, darkerColor) {
 	this.x = x;
 	this.y = y;
 	this.dx = dx;
 	this.dy = dy;
 	this.radius = radius;
 	this.color = color;
+	this.darkerColor = darkerColor;
 
 	this.update = function() {
-		if (this.y + this.radius + this.dy / iterations> canvas.height) {
-			this.dy = -this.dy;
+		if (this.y + this.radius + this.dy / iterations > canvas.height) {
+			this.dy = -this.dy * 0.9;
 			this.dy = this.dy * friction;
 			this.dx = this.dx * friction;
 			this.y = canvas.height - this.radius;
 			// this.x = canvas.height - this.radius;
 		}
 
-		if (this.x + this.radius + this.dx / iterations> canvas.width) {
-			this.dx = -this.dx;
+		if (this.x + this.radius + this.dx / iterations > canvas.width) {
+			this.dx = -this.dx * 0.9;
 			this.dy = this.dy * friction;
 			this.dx = this.dx * friction;
 			this.x = canvas.width - this.radius;
 		}
 
 		if (this.x - this.radius + this.dx / iterations < 0) {
-			this.dx = -this.dx;
+			this.dx = -this.dx * 0.9;
 			this.dy = this.dy * friction;
 			this.dx = this.dx * friction;
 			this.x = this.radius;
 		}
+
+		if (this.y - this.radius + this.dy / iterations < canvas.height * 0.06) {
+			this.dy = -this.dy * 0.9;
+			this.dy = this.dy * friction;
+			this.dx = this.dx * friction;
+			this.y = this.radius + canvas.height * 0.06;
+		}
+
 
 		this.dy += gravity / iterations;
 		this.dx += wind / iterations;
@@ -123,9 +197,11 @@ function Ball(x, y, dx, dy, radius, color) {
 	this.draw = function() {
 		ctx.beginPath();
 		ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);	
-		ctx.strokeStyle = this.color;
-		ctx.lineWidth = 4;
+    	ctx.fillStyle = this.color;
+		ctx.strokeStyle = this.darkerColor;
+		ctx.lineWidth = 8;
 		ctx.stroke();
+    	ctx.fill();
 		ctx.closePath();
 	};
 }
@@ -137,13 +213,14 @@ let ballArray = [];
 function init() {
 	ballArray = [];
 
-	for (let i = 0; i < 100; i++) {
+	for (let i = 0; i < ballCount; i++) {
 		let radius = randomIntFromRange(30, 60);
+		let random = randomIntFromRange(0, colors.length - 1);
 		let x = randomIntFromRange(radius, canvas.width - radius);
 		let y = randomIntFromRange(3, canvas.height - radius);
 		let dx = randomIntFromRange(-3, 3)
 		let dy = randomIntFromRange(-2, 2)
-	    ballArray.push(new Ball(x, y, dx, dy, radius, randomColor(colors)));
+	    ballArray.push(new Ball(x, y, dx, dy, radius, colors[random], darkerColors[random]));
 	}
 }
 
@@ -224,15 +301,30 @@ function animate() {
 
 init();
 
-document.getElementById("gravity").addEventListener("input", function(event) {
-	gravity = parseInt(this.value) / 100;
-	document.getElementById("gravity-text").textContent = "value: " + parseInt(this.value);
+document.getElementById("ballCount").addEventListener("input", function(event) {
+	ballCount = parseInt(this.value);
+	document.getElementById("ballCount-text").textContent = "Balls: " + parseInt(this.value);
 });
 
-// document.getElementById("test-slider").addEventListener("input", function(event) {
-// 	gravity = parseInt(this.value) / 100;
-// 	document.getElementById("test-slider-text").textContent = "value: " + parseInt(this.value) + "%";
-// });
+document.getElementById("gravity").addEventListener("input", function(event) {
+	gravity = parseInt(this.value) / 100;
+	document.getElementById("gravity-text").textContent = "Gravity: " + parseInt(this.value) + "%";
+});
+
+document.getElementById("wind").addEventListener("input", function(event) {
+	wind = parseInt(this.value) / 100;
+	document.getElementById("wind-text").textContent = "Wind: " + parseInt(this.value) + "%";
+});
+
+document.getElementById("iterations").addEventListener("input", function(event) {
+	iterations = parseInt(this.value);
+	document.getElementById("iterations-text").textContent = "iterations: " + parseInt(this.value);
+});
+
+document.getElementById("friction").addEventListener("input", function(event) {
+	friction = parseInt(this.value) / 100;
+	document.getElementById("friction-text").textContent = "Friction: " + parseInt(this.value) + "%";
+});
 
 let sliders = document.getElementsByClassName("slider");
 	for (let i = 0; i < sliders.length; i++) {
@@ -241,16 +333,3 @@ let sliders = document.getElementsByClassName("slider");
 		});
 		sliders[i].dispatchEvent(new CustomEvent("input"));
 	}
-
-//Util Funtions
-function map(num, numMin, numMax, mapMin, mapMax) {
-			return mapMin + ((mapMax - mapMin) / (numMax - numMin)) * (num - numMin);
-		};
-
-function openNav(sidenav) {
-  document.getElementById(sidenav).style.width = "20vw";
-}
-
-function closeNav(sidenav) {
-  document.getElementById(sidenav).style.width = "0";
-}

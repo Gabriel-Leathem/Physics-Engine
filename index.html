@@ -5,7 +5,6 @@
 <title>Physics Simulation - Info</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela Round">
 <link rel="stylesheet" href="style.css">
-<script src="main.js" defer></script>
 <script src="canvas.js" defer></script>
 </head>
 <body>
@@ -33,6 +32,40 @@
             <br>
             <br>
             Physics is all relative. This theme resonates through Einstein’s special and general theories of relativity. Einstein's work is crucially important to GPS in your phone, for example. It takes radio signals from several satellites orbiting the Earth and calculates your location accurate to several centimeters. Because the speed and height of the satellites alters the signal very slightly, the smartphone adjusts the results using Einstein's theories. Without a helping hand from relativity, GPS would be far less accurate or useful.
+<br>
+<br>          
+For this simulation, I had to use elastic collision, which enquired using the one dimensional newtonian equation. An elastic collision is an encounter between two bodies in which the total kinetic energy of the two bodies remains the same. In an ideal, perfectly elastic collision, there is no net conversion of kinetic energy into other forms such as heat, noise, or potential energy. n an elastic collision, both momentum and kinetic energy are conserved. Consider particles 1 and 2 with masses m1, m2, and velocities u1, u2 before collision, v1, v2 after collision. The conservation of the total momentum before and after the collision is expressed by:
+<br>
+<br>
+<img src="./Images/Equation1.png"
+<br>
+<br>
+Likewise, the conservation of the total kinetic energy is expressed by:
+<br>
+<br>
+<img src="./Images/Equation2.png"
+<br>
+<br>
+These equations may be solved directly to find v1, v2 when u1, u2 are known:
+<br>
+<br>
+<img src="./Images/Equation3-4.png"
+<br>
+<br>
+If both masses are the same, we have a trivial solution:
+<br>
+<br>
+<img src="./Images/Equation5.png">
+<br>
+<br>
+This simply corresponds to the bodies exchanging their initial velocities to each other.
+<br>
+<br>
+As can be expected, the solution is invariant under adding a constant to all velocities, which is like using a frame of reference with constant translational velocity. Indeed, to derive the equations, one may first change the frame of reference so that one of the known velocities is zero, determine the unknown velocities in the new frame of reference, and convert back to the original frame of reference.
+<br>
+<br>
+              
+<img src="./Images/Elastic Collision.png">
             </p>
     </div>
     <div class="webpage-state" id="webpage-state-how-it-works">
@@ -43,12 +76,10 @@
             <h2>Instructions</h2>
             <p> To operate this simulation you have to keep these instructions in mind: </p>
                  <ol id="instructions-list">
-                     <li>By default, there will be one ball that appears on the screen (which will be a basketball)</li>
-                     <li>Click the "start simulation" button to begin the program</li>
-                     <li>Use the sliders to change the gravity of the area, and the wind</li>
-                     <li>Click the different ball options to choose the balls to simulate</li>
-                     <li>Use the buttons showed for selecting how many balls to put on the screen to compare, if you want to compare different balls and their properties</li>
-                     <li>Click the "reset simulation" button to reset the program</li>
+                     <li>By default, there will be ten balls that appear on screen</li>
+                     <li>Click the "start/restart" restart/start program</li>
+                     <li>Use the sliders to change the gravity of the area, wind, amount of balls and iterations</li>
+                     <li>Click the different buttons to go home, restart and change theme of canvas</li> 
                 </ol>
             <p>
                 Have fun and play around with the simulation!!!
@@ -62,7 +93,7 @@
         <div>
             <h2>Overview</h2>
             <p>
-                I have designed a physics simulation that represents the operation of balls dropping to the ground. You can display different balls, such as a tennis ball, basketball, football etc. You can also compare 2 different balls to see the different physics of the balls, that are affected my mass, weight, wind and gravity. The simulation was created is HTML5 Canvas, and can be useful in testing the accurate simulation of how balls work in a physics perspective.
+                I have designed a physics simulation that represents the operation of balls dropping to the ground. You can display a different amount of balls. You can also observe the balls to see the different physics of the balls, that are affected by mass, weight, iterations wind and gravity. The simulation was created is HTML5 Canvas, and can be useful in testing the accurate simulation of how balls work in a physics perspective. An important note is that the iterations are what keep the balls from sinking into each other, and reduce jitter. A good rule of thumb for keeping the simulation realistic, the less balls you have, decrease iterations, and the more you have, increase iterations, for example if you have 40 balls increase the iterations to 8 or more.
                 <br>
                 <br>
                 For example, as a golf ball travels upward, kinetic energy is transformed into gravitational potential energy, and the ball slows down. Since gravitational potential energy is proportional to height, the maximum height of the golf ball should be about nine times the height from which it was originally dropped. As for a ball comparison travelling downwards, for example, both a basketball and a tennis ball are moving at the same speed right before they hit the ground. After the collision, the basketball has a very low speed and thus very little kinetic energy. That means the tennis ball gets a bunch of kinetic energy—and with a low mass, you get a high velocity.
@@ -72,17 +103,32 @@
     <div class="webpage-state" id="webpage-state-simulation">
         <canvas id="myCanvas"></canvas>
         <div id="simulation-top-bar">
-            <img src="./Images/cog.png" onclick="openNav('sidenav-left')" class="buttons" id="settings">Settings</img>
+            <img src="./Images/cog.png" onclick="openNav('sidenav-left')" class="buttons" id="settings"></img>
             <!-- <p class="top-bar-text" id="home">Home</p>
             <p class="top-bar-text" id="how-it-works">How It Works</p> -->
         </div>
 
         <div id="sidenav-left" class="sidenav">
             <span onclick="closeNav('sidenav-left')" class="buttons" id="close-settings">&times;</span>
-            <p id="gravity-text">value: 50</p>
+            <p id="gravity-text">Gravity: 100</p>
             <input type="range" class="slider" id="gravity" min="0" max="100" value="100">
+          
+            <p id="iterations-text">Iterations: 8</p>
+            <input type="range" class="slider" id="iterations" min="0" max="16" value="8">
+          
+                      <p id="wind-text">Wind: 0</p>
+            <input type="range" class="slider" id="wind" min="0" max="100" value="0">
+          
+                                <p id="friction-text">Friction: 99</p>
+            <input type="range" class="slider" id="friction" min="0" max="100" value="99">
+          
+                                          <p id="ballCount-text">Balls: 10</p>
+            <input type="range" class="slider" id="ballCount" min="1" max="100" value="10">
+          
             <button class="settings-button" id="start-restart">Start/Restart</button>
             <button class="settings-button" id="dark-mode">Dark Mode Toggle</button>
+          
+                      <button class="settings-button" id="home-button">Home</button>
         </div>
     </div>
 </body>
