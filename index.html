@@ -1,137 +1,130 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Physics Simulation - Info</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela Round">
-<link rel="stylesheet" href="style.css">
-<script src="canvas.js" defer></script>
-</head>
-<body>
-    <div class="webpage-state" id="webpage-state-always">
-        <div id="top-bar">
-            <p class="top-bar-text" id="home">Home</p>
-            <p class="top-bar-text" id="how-it-works">How It Works</p>
-            <p class="top-bar-text" id="about">About</p>
-            <p class="top-bar-text" id="simulation">Simulation</p>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Physics Simulation - Info</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela Round">
+        <link rel="stylesheet" href="style.css">
+        <script src="canvas.js" defer></script>
+    </head>
+    <body>
+        <div class="webpage-state" id="webpage-state-always">
+            <div id="top-bar">
+                <p class="top-bar-text" id="home">Home</p>
+                <p class="top-bar-text" id="how-it-works">How It Works</p>
+                <p class="top-bar-text" id="about">About</p>
+                <p class="top-bar-text" id="simulation">Simulation</p>
+            </div>
         </div>
-    </div>
-    <div class="webpage-state" id="webpage-state-home">
-        <img id="equation-background" src="./Images/Equation.jpg">
-        <div id="physics-title-position-container">
-            <h1>PHYSICS</h1>
-        </div>
+        <div class="webpage-state" id="webpage-state-home">
+            <img id="equation-background" src="./Images/Equation.jpg">
+            <div id="physics-title-position-container">
+                <h1>PHYSICS</h1>
+            </div>
             <h2>Introduction</h2>
             <p>Physics is a natural science that happens all around us, all the time, everyday. We try to understand the universe and everything in it. What is physics? Physics is the branch of science which deals with matter and its relation to energy. It involves study of physical and natural phenomena around us. The physics of a ball dropping is actually decently complex and can take a lot to understand. For example, a bouncing ball in a simplified case, the ball falls in line with the force of gravity, which always points directly downward. On earth, this acceleration due to gravity is 9.8 m/s2 (g= 9.8 m/s2). This means, in essence, that for every second for falling, the ball's velocity will accelerate by 9.8 m/s. Velocity is the speed of something in a certain direction.
-            <br>
-            <br>
-            There are many applications to physics today. For example, the transportation industry is no stranger to the manipulation of everyday physics. Cars and trains utilize the wheel, which provides a smooth, steady motion. Newton's laws of motion are at work as mechanical force and acceleration, action, reaction and inertia. Airplanes take it one step further, allowing lift as well as forward momentum. They manipulate physics – much like birds – by creating lift through wing shape as well as the wing’s angle – both of which serve to alter airflow.
-            <br>
-            <br>
-            Another example of physics in action is with a simple lever – most easily observed at a park. Levers come in three flavors, each with varying fulcrum locations. They serve to magnify force, lessening the effort needed to move an object on the opposing end. A simple “see-saw” at a park consists of a lever (the locations for sitting) and the fulcrum (placed in the middle). The two opposing forces counterbalance each other, creating a smooth ride through the air. At the same park you'll see a slide, a device that combines the stairs going up with the slide going down, both examples of inclined planes. The inclined plane eases the effort of climbing by spreading it over a longer distance. The smooth slide returns you gently to earth, slowing the influence of gravity just enough to make it fun.
-            <br>
-            <br>
-            Physics is all relative. This theme resonates through Einstein’s special and general theories of relativity. Einstein's work is crucially important to GPS in your phone, for example. It takes radio signals from several satellites orbiting the Earth and calculates your location accurate to several centimeters. Because the speed and height of the satellites alters the signal very slightly, the smartphone adjusts the results using Einstein's theories. Without a helping hand from relativity, GPS would be far less accurate or useful.
-<br>
-<br>          
-For this simulation, I had to use elastic collision, which enquired using the one dimensional newtonian equation. An elastic collision is an encounter between two bodies in which the total kinetic energy of the two bodies remains the same. In an ideal, perfectly elastic collision, there is no net conversion of kinetic energy into other forms such as heat, noise, or potential energy. n an elastic collision, both momentum and kinetic energy are conserved. Consider particles 1 and 2 with masses m1, m2, and velocities u1, u2 before collision, v1, v2 after collision. The conservation of the total momentum before and after the collision is expressed by:
-<br>
-<br>
-<img src="./Images/Equation1.png"
-<br>
-<br>
-Likewise, the conservation of the total kinetic energy is expressed by:
-<br>
-<br>
-<img src="./Images/Equation2.png"
-<br>
-<br>
-These equations may be solved directly to find v1, v2 when u1, u2 are known:
-<br>
-<br>
-<img src="./Images/Equation3-4.png"
-<br>
-<br>
-If both masses are the same, we have a trivial solution:
-<br>
-<br>
-<img src="./Images/Equation5.png">
-<br>
-<br>
-This simply corresponds to the bodies exchanging their initial velocities to each other.
-<br>
-<br>
-As can be expected, the solution is invariant under adding a constant to all velocities, which is like using a frame of reference with constant translational velocity. Indeed, to derive the equations, one may first change the frame of reference so that one of the known velocities is zero, determine the unknown velocities in the new frame of reference, and convert back to the original frame of reference.
-<br>
-<br>
-              
-<img src="./Images/Elastic Collision.png">
+                <br>
+                <br>
+                There are many applications to physics today. For example, the transportation industry is no stranger to the manipulation of everyday physics. Cars and trains utilize the wheel, which provides a smooth, steady motion. Newton's laws of motion are at work as mechanical force and acceleration, action, reaction and inertia. Airplanes take it one step further, allowing lift as well as forward momentum. They manipulate physics – much like birds – by creating lift through wing shape as well as the wing’s angle – both of which serve to alter airflow.
+                <br>
+                <br>
+                Another example of physics in action is with a simple lever – most easily observed at a park. Levers come in three flavors, each with varying fulcrum locations. They serve to magnify force, lessening the effort needed to move an object on the opposing end. A simple “see-saw” at a park consists of a lever (the locations for sitting) and the fulcrum (placed in the middle). The two opposing forces counterbalance each other, creating a smooth ride through the air. At the same park you'll see a slide, a device that combines the stairs going up with the slide going down, both examples of inclined planes. The inclined plane eases the effort of climbing by spreading it over a longer distance. The smooth slide returns you gently to earth, slowing the influence of gravity just enough to make it fun.
+                <br>
+                <br>
+                Physics is all relative. This theme resonates through Einstein’s special and general theories of relativity. Einstein's work is crucially important to GPS in your phone, for example. It takes radio signals from several satellites orbiting the Earth and calculates your location accurate to several centimeters. Because the speed and height of the satellites alters the signal very slightly, the smartphone adjusts the results using Einstein's theories. Without a helping hand from relativity, GPS would be far less accurate or useful.
+                <br>
+                <br>          
+                For this simulation, I had to use elastic collision, which enquired using the one dimensional newtonian equation. An elastic collision is an encounter between two bodies in which the total kinetic energy of the two bodies remains the same. In an ideal, perfectly elastic collision, there is no net conversion of kinetic energy into other forms such as heat, noise, or potential energy. n an elastic collision, both momentum and kinetic energy are conserved. Consider particles 1 and 2 with masses m1, m2, and velocities u1, u2 before collision, v1, v2 after collision. The conservation of the total momentum before and after the collision is expressed by:
+                <br>
+                <br>
+                <img src="./Images/Equation1.png">
+                <br>
+                <br>
+                Likewise, the conservation of the total kinetic energy is expressed by:
+                <br>
+                <br>
+                <img src="./Images/Equation2.png">
+                <br>
+                <br>
+                These equations may be solved directly to find v1, v2 when u1, u2 are known:
+                <br>
+                <br>
+                <img src="./Images/Equation3-4.png">
+                <br>
+                <br>
+                If both masses are the same, we have a trivial solution:
+                <br>
+                <br>
+                <img src="./Images/Equation5.png">
+                <br>
+                <br>
+                This simply corresponds to the bodies exchanging their initial velocities to each other.
+                <br>
+                <br>
+                As can be expected, the solution is invariant under adding a constant to all velocities, which is like using a frame of reference with constant translational velocity. Indeed, to derive the equations, one may first change the frame of reference so that one of the known velocities is zero, determine the unknown velocities in the new frame of reference, and convert back to the original frame of reference.
+                <br>
+                <br>
+                <img src="./Images/Elastic Collision.png">
             </p>
-    </div>
-    <div class="webpage-state" id="webpage-state-how-it-works">
-        <img id="equation-background" src="./Images/Equation.jpg">
-        <div id="how-it-works-title-position-container"><h1>HOW IT WORKS</h1>
         </div>
-        <div>
-            <h2>Instructions</h2>
-            <p> To operate this simulation you have to keep these instructions in mind: </p>
-                 <ol id="instructions-list">
-                     <li>By default, there will be ten balls that appear on screen</li>
-                     <li>Click the "start/restart" restart/start program</li>
-                     <li>Use the sliders to change the gravity of the area, wind, amount of balls and iterations</li>
-                     <li>Click the different buttons to go home, restart and change theme of canvas</li> 
+        <div class="webpage-state" id="webpage-state-how-it-works">
+            <img id="equation-background" src="./Images/Equation.jpg">
+            <div id="how-it-works-title-position-container">
+                <h1>HOW IT WORKS</h1>
+            </div>
+            <div>
+                <h2>Instructions</h2>
+                <p> To operate this simulation you have to keep these instructions in mind: </p>
+                <ol id="instructions-list">
+                    <li>By default, there will be ten balls that appear on screen</li>
+                    <li>Click the "start/restart" restart/start program</li>
+                    <li>Use the sliders to change the gravity of the area, wind, amount of balls and iterations</li>
+                    <li>Click the different buttons to go home, restart and change theme of canvas</li>
                 </ol>
-            <p>
-                Have fun and play around with the simulation!!!
-            </p>
+                <p>
+                    Have fun and play around with the simulation!!!
+                </p>
+            </div>
         </div>
-    </div>
-    <div class="webpage-state" id="webpage-state-about">
-        <img id="equation-background" src="./Images/Equation.jpg">
-        <div id="about-title-position-container"><h1>ABOUT</h1>
+        <div class="webpage-state" id="webpage-state-about">
+            <img id="equation-background" src="./Images/Equation.jpg">
+            <div id="about-title-position-container">
+                <h1>ABOUT</h1>
+            </div>
+            <div>
+                <h2>Overview</h2>
+                <p>
+                    I have designed a physics simulation that represents the operation of balls dropping to the ground. You can display a different amount of balls. You can also observe the balls to see the different physics of the balls, that are affected by mass, weight, iterations wind and gravity. The simulation was created is HTML5 Canvas, and can be useful in testing the accurate simulation of how balls work in a physics perspective. An important note is that the iterations are what keep the balls from sinking into each other, and reduce jitter. A good rule of thumb for keeping the simulation realistic, the less balls you have, decrease iterations, and the more you have, increase iterations, for example if you have 40 balls increase the iterations to 8 or more.
+                    <br>
+                    <br>
+                    For example, as a golf ball travels upward, kinetic energy is transformed into gravitational potential energy, and the ball slows down. Since gravitational potential energy is proportional to height, the maximum height of the golf ball should be about nine times the height from which it was originally dropped. As for a ball comparison travelling downwards, for example, both a basketball and a tennis ball are moving at the same speed right before they hit the ground. After the collision, the basketball has a very low speed and thus very little kinetic energy. That means the tennis ball gets a bunch of kinetic energy—and with a low mass, you get a high velocity.
+                </p>
+            </div>
         </div>
-        <div>
-            <h2>Overview</h2>
-            <p>
-                I have designed a physics simulation that represents the operation of balls dropping to the ground. You can display a different amount of balls. You can also observe the balls to see the different physics of the balls, that are affected by mass, weight, iterations wind and gravity. The simulation was created is HTML5 Canvas, and can be useful in testing the accurate simulation of how balls work in a physics perspective. An important note is that the iterations are what keep the balls from sinking into each other, and reduce jitter. A good rule of thumb for keeping the simulation realistic, the less balls you have, decrease iterations, and the more you have, increase iterations, for example if you have 40 balls increase the iterations to 8 or more.
-                <br>
-                <br>
-                For example, as a golf ball travels upward, kinetic energy is transformed into gravitational potential energy, and the ball slows down. Since gravitational potential energy is proportional to height, the maximum height of the golf ball should be about nine times the height from which it was originally dropped. As for a ball comparison travelling downwards, for example, both a basketball and a tennis ball are moving at the same speed right before they hit the ground. After the collision, the basketball has a very low speed and thus very little kinetic energy. That means the tennis ball gets a bunch of kinetic energy—and with a low mass, you get a high velocity.
-            </p>
-        </div>
-    </div>
-    <div class="webpage-state" id="webpage-state-simulation">
-        <canvas id="myCanvas"></canvas>
-        <div id="simulation-top-bar">
-            <img src="./Images/cog.png" onclick="openNav('sidenav-left')" class="buttons" id="settings"></img>
-            <!-- <p class="top-bar-text" id="home">Home</p>
-            <p class="top-bar-text" id="how-it-works">How It Works</p> -->
-        </div>
-
-        <div id="sidenav-left" class="sidenav">
-            <span onclick="closeNav('sidenav-left')" class="buttons" id="close-settings">&times;</span>
-            <p id="gravity-text">Gravity: 100</p>
-            <input type="range" class="slider" id="gravity" min="0" max="100" value="100">
-          
-            <p id="iterations-text">Iterations: 2</p>
-            <input type="range" class="slider" id="iterations" min="0" max="32" value="2">
-          
-                      <p id="wind-text">Wind: 0</p>
-            <input type="range" class="slider" id="wind" min="-100" max="100" value="0">
-          
-                                <p id="friction-text">Friction: 99</p>
-            <input type="range" class="slider" id="friction" min="0" max="100" value="99">
-          
-                                          <p id="ballCount-text">Balls: 10</p>
-            <input type="range" class="slider" id="ballCount" min="1" max="100" value="10">
-          
+        <div class="webpage-state" id="webpage-state-simulation">
+            <canvas id="myCanvas"></canvas>
+            <div id="simulation-top-bar">
+                <img src="./Images/cog.png" onclick="openNav('sidenav-left')" class="buttons" id="settings"></img>
+                <!-- <p class="top-bar-text" id="home">Home</p>
+                    <p class="top-bar-text" id="how-it-works">How It Works</p> -->
+            </div>
+            <div id="sidenav-left" class="sidenav">
+                <span onclick="closeNav('sidenav-left')" class="buttons" id="close-settings">&times;</span>
+                <p id="gravity-text">Gravity: 100</p>
+                <input type="range" class="slider" id="gravity" min="0" max="100" value="100">
+                <p id="iterations-text">Iterations: 2</p>
+                <input type="range" class="slider" id="iterations" min="0" max="32" value="2">
+                <p id="wind-text">Wind: 0</p>
+                <input type="range" class="slider" id="wind" min="-100" max="100" value="0">
+                <p id="friction-text">Friction: 99</p>
+                <input type="range" class="slider" id="friction" min="0" max="100" value="99">
+                <p id="ballCount-text">Balls: 10</p>
+                <input type="range" class="slider" id="ballCount" min="1" max="100" value="10">
                 <div class="footer"></div>
-
-            <button class="settings-button" id="start-restart">Start/Restart</button>
-            <button class="settings-button" id="dark-mode">Dark Mode Toggle</button>
-          
-                      <button class="settings-button" id="home-button">Home</button>
+                <button class="settings-button" id="start-restart">Start/Restart</button>
+                <button class="settings-button" id="dark-mode">Dark Mode Toggle</button>
+                <button class="settings-button" id="home-button">Home</button>
+            </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>
