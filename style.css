@@ -33,7 +33,7 @@ p {
     font-size: 1.8vh;
 }
 
-#nebula-background {
+#equation-background {
     width: 100vw;
 }
 
@@ -226,8 +226,8 @@ p {
     font-family: inherit;
     font-size: 1vw;
     border: none;
-    margin-top: 2vh;
-    margin-bottom: 1vh;
+    margin-top: 0.5vh;
+    margin-bottom: 0.5vh;
     height: calc(5vh + 1em);
     transition: background 0.2s;
 }
@@ -261,4 +261,8 @@ p {
     margin left: 0;
     padding-left: 18vw;
     padding-right: 0;
+}
+
+.footer {
+    margin-top: 3vh;
 }

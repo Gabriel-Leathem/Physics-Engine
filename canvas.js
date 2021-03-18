@@ -227,8 +227,8 @@ function init() {
 function resolveImpulses(object, otherObject) {
 	let angle = direction(object.x, object.y, otherObject.x, otherObject.y);
 	let distance = (dist(object.x, object.y, otherObject.x, otherObject.y) - object.radius - otherObject.radius);
-	let impulseX = Math.sin(angle) * distance / 4;
-	let impulseY = Math.cos(angle) * distance / 4;
+	let impulseX = Math.sin(angle) * distance / 2;
+	let impulseY = Math.cos(angle) * distance / 2;
 	object.dx -= impulseX;
 	object.dy -= impulseY;
 	object.x -= impulseX;
